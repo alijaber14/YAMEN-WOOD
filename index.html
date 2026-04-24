@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> YAMEN WOOD</title>
+
+<style>
+    
+ body{
+    margin:0;
+    font-family:Arial;
+    text-align:center;
+    overflow-x:hidden;
+    position:relative;
+
+    background-image:url("img/bg.jpg");
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+}
+
+/* 🔥 طبقة بلور + تغميق */
+body::before{
+    content:"";
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+
+    backdrop-filter: blur(7px);   /* 👈 البلور */
+    -webkit-backdrop-filter: blur(6px);
+
+    background:rgba(0,0,0,0.10);  /* 👈 تغميق */
+    z-index:-1;
+}
+
+
+
+@keyframes bgMove {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+/* الهيدر */
+.header{
+    padding:70px 15px 20px;
+}
+
+.header h1{
+    font-size:52px;   /* 👈 كبرت الاسم */
+    margin:0;
+    font-weight:bold;
+    letter-spacing:2px;
+    color:#111;
+}
+
+.header p{
+    font-size:22px;
+    color:#ffffff;
+}
+
+
+/* السوشيال */
+.social{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin:30px 0;
+}
+
+/* 👇 ده المهم */
+.social a{
+    text-decoration:none;
+    color:#111;
+    font-size:18px;
+    font-weight:bold;
+
+    padding:15px 25px;
+    border-radius:15px;
+
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(10px);
+
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+
+    transition:0.3s;
+}
+
+/* hover */
+.social a:hover{
+    transform:translateY(-5px) scale(1.05);
+    background:#d06303;
+    color:#fff;
+}
+
+
+/* الأقسام */
+.categories{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap:20px;
+    padding:30px;
+    max-width:900px;
+    margin:auto;
+}
+
+.cat{
+    padding:45px 10px;
+    border-radius:20px;
+    cursor:pointer;
+    font-size:20px;
+    font-weight:bold;
+
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(10px);
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+    transition:0.4s;
+}
+
+.cat:hover{
+    transform:translateY(-10px) scale(1.05);
+    background:#d06303;
+    color:#fff;
+}
+
+/* باقي الموقع */
+.section{ display:none; padding:20px; }
+
+.back{
+    margin:15px;
+    display:inline-block;
+    padding:8px 15px;
+    background:#111;
+    color:#fff;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.products{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap:15px;
+    max-width:1000px;
+    margin:auto;
+}
+
+.card{
+    background:#fff;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+}
+
+.card-body{
+    display:none;
+}
+
+
+.order-btn{
+    width:100%;
+    margin-top:10px;
+    background:#25D366;
+    color:white;
+    border:none;
+    padding:10px;
+    border-radius:10px;
+    cursor:pointer;
+}
+.subtitle{
+    font-family: Arial, sans-serif;
+    font-size:26px;
+    font-weight:bold;
+    color:#000000; /* أو أي لون يعجبك */
+    letter-spacing:1px;
+    text-shadow:0 2px 10px rgba(0,0,0,0.6);
+}
+
+.modal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.9);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.modal img{
+    max-width:90%;
+    max-height:90%;
+    border-radius:10px;
+}
+
+.img-box{
+    position:relative;
+    line-height:0;
+}
+
+
+.zoom-icon{
+    position:absolute;
+    top:10px;
+    right:10px;
+    background:rgba(0,0,0,0.6);
+    color:#fff;
+    padding:8px;
+    border-radius:50%;
+    font-size:16px;
+    opacity:0;
+    transition:0.3s;
+}
+
+.img-box:hover .zoom-icon{
+    opacity:1;
+}
+
+.img-box img{
+    width:100%;
+height: 350px;
+    object-fit:cover;
+    display:block;
+}
+
+
+.img-box:hover img{
+    transform:scale(1.05);
+}
+
+.modal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.9);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.modal img{
+    max-width:90%;
+    max-height:90%;
+    border-radius:10px;
+}
+
+.close-btn{
+    position:absolute;
+    top:20px;
+    right:20px;
+    font-size:30px;
+    color:#fff;
+    cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+<input type="file" id="bgUpload" accept="image/*" onchange="setBg(event)" style="display:none;">
+
+<!-- الصفحة الرئيسية -->
+<div id="home">
+
+    <div class="header">
+<h1> YAMEN WOOD</h1>
+<p class="subtitle">اختار القسم اللي يناسبك</p>
+    </div>
+
+    <!-- سوشيال -->
+    <div class="social-box">
+
+    <div class="social">
+        <a href="https://wa.me/201010529776" target="_blank">واتساب</a>
+        <a href="https://www.facebook.com/share/1CqDAGspKe/" target="_blank">فيسبوك</a>
+        <a href="#">إنستجرام</a>
+        <a href="#">تيك توك</a>
+    </div>
+
+</div>
+
+
+
+    <!-- الأقسام -->
+    <div class="categories">
+        <div class="cat" onclick="showSection('bedroom')"> دريسنج</div>
+        <div class="cat" onclick="showSection('kitchen')"> مطابخ</div>
+        <div class="cat" onclick="showSection('decor')"> مكتبة شاشة</div>
+        <div class="cat" onclick="showSection('beds')"> سراير</div>
+        <div class="cat" onclick="showSection('corner')"> ركن & انترية</div>
+
+    </div>
+
+</div>
+
+<!-- دريسنج -->
+<div class="section" id="bedroom">
+    <div class="back" onclick="goHome()"> رجوع</div>
+    <h2>دريسنج</h2>
+
+    <div class="products">
+<div class="card">
+    <div class="img-box" onclick="openImage('img/d1.jpg')">
+        <img src="img/d1.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/d2.jpg')">
+        <img src="img/d2.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/d3.jpg')">
+        <img src="img/d3.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/d4.jpg')">
+        <img src="img/d4.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/d5.jpg')">
+        <img src="img/d5.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/d6.jpg')">
+        <img src="img/d6.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/d7.jpg')">
+        <img src="img/d7.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/d8.jpg')">
+        <img src="img/d8.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/d9.jpg')">
+        <img src="img/d9.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/d10.jpg')">
+        <img src="img/d10.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/d11.jpg')">
+        <img src="img/d11.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/d12.jpg')">
+        <img src="img/d12.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/d13.jpg')">
+        <img src="img/d13.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/d14.jpg')">
+        <img src="img/d14.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/d15.jpg')">
+        <img src="img/d15.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/d16.jpg')">
+        <img src="img/d16.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/d17.jpg')">
+        <img src="img/d17.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/d18.jpg')">
+        <img src="img/d18.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/d19.jpg')">
+        <img src="img/d19.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/d20.jpg')">
+        <img src="img/d20.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/d21.jpg')">
+        <img src="img/d21.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/d22.jpg')">
+        <img src="img/d22.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/d23.jpg')">
+        <img src="img/d23.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/d24.jpg')">
+        <img src="img/d24.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/d25.jpg')">
+        <img src="img/d25.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+   </div>
+        </div>
+
+        <!-- باقي الصور زي ما هي... -->
+
+    </div>
+</div>
+<!-- مطابخ -->
+<div class="section" id="kitchen">
+    <div class="back" onclick="goHome()"> رجوع</div>
+    <h2>مطابخ </h2>
+
+    <div class="products">
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/a1.jpg')">
+                <img src="img/a1.jpg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body">
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/a2.jpg')">
+                <img src="img/a2.jpg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body">
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/a3.jpg')">
+                <img src="img/a3.jpg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body">
+            </div>
+        </div>
+<div class="card">
+    <div class="img-box" onclick="openImage('img/a4.jpg')">
+        <img src="img/a4.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/a5.jpg')">
+        <img src="img/a5.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/a6.jpg')">
+        <img src="img/a6.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/a7.jpg')">
+        <img src="img/a7.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/a8.jpg')">
+        <img src="img/a8.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/a9.jpg')">
+        <img src="img/a9.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/a10.jpg')">
+        <img src="img/a10.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/a11.jpg')">
+        <img src="img/a11.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/a12.jpg')">
+        <img src="img/a12.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/a13.jpg')">
+        <img src="img/a13.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/a14.jpg')">
+        <img src="img/a14.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/a15.jpg')">
+        <img src="img/a15.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/a16.jpg')">
+        <img src="img/a16.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+   </div>
+        </div>
+
+        <!-- باقي الصور زي ما هي... -->
+
+    </div>
+</div>
+
+
+<!-- ديكورات -->
+<div class="section" id="decor">
+    <div class="back" onclick="goHome()"> رجوع</div>
+    <h2>مكتبة شاشة</h2>
+
+    <div class="products">
+
+       <div class="card">
+    <div class="img-box" onclick="openImage('img/c1.jpg')">
+        <img src="img/c1.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/c2.jpg')">
+        <img src="img/c2.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/c3.jpg')">
+        <img src="img/c3.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/c4.jpg')">
+        <img src="img/c4.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/c5.jpg')">
+        <img src="img/c5.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/c6.jpg')">
+        <img src="img/c6.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/c7.jpg')">
+        <img src="img/c7.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/c8.jpg')">
+        <img src="img/c8.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/c9.jpg')">
+        <img src="img/c9.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/c10.jpg')">
+        <img src="img/c10.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/c11.jpg')">
+        <img src="img/c11.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/c12.jpg')">
+        <img src="img/c12.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/c13.jpg')">
+        <img src="img/c13.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/c14.jpg')">
+        <img src="img/c14.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/c15.jpg')">
+        <img src="img/c15.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/c16.jpg')">
+        <img src="img/c16.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/c17.jpg')">
+        <img src="img/c17.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/c18.jpg')">
+        <img src="img/c18.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/c19.jpg')">
+        <img src="img/c19.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/c20.jpg')">
+        <img src="img/c20.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/c21.jpg')">
+        <img src="img/c21.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/c22.jpg')">
+        <img src="img/c22.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/c23.jpg')">
+        <img src="img/c23.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/c24.jpg')">
+        <img src="img/c24.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+   </div>
+        </div>
+
+        <!-- باقي الصور زي ما هي... -->
+
+    </div>
+</div>
+
+<!-- سراير -->
+<div class="section" id="beds">
+    <div class="back" onclick="goHome()"> رجوع</div>
+    <h2>سراير</h2>
+
+    <div class="products">
+
+       <div class="card">
+    <div class="img-box" onclick="openImage('img/b1.jpg')">
+        <img src="img/b1.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/b2.jpg')">
+        <img src="img/b2.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/b3.jpg')">
+        <img src="img/b3.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/b4.jpg')">
+        <img src="img/b4.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/b5.jpg')">
+        <img src="img/b5.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/b6.jpg')">
+        <img src="img/b6.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/b7.jpg')">
+        <img src="img/b7.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/b8.jpg')">
+        <img src="img/b8.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/b9.jpg')">
+        <img src="img/b9.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/b10.jpg')">
+        <img src="img/b10.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/b11.jpg')">
+        <img src="img/b11.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/b12.jpg')">
+        <img src="img/b12.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/b13.jpg')">
+        <img src="img/b13.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/b14.jpg')">
+        <img src="img/b14.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/b15.jpg')">
+        <img src="img/b15.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/b16.jpg')">
+        <img src="img/b16.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/b17.jpg')">
+        <img src="img/b17.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/b18.jpg')">
+        <img src="img/b18.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/b19.jpg')">
+        <img src="img/b19.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/b20.jpg')">
+        <img src="img/b20.jpg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+   </div>
+        </div>
+
+        <!-- باقي الصور زي ما هي... -->
+
+    </div>
+</div>
+
+<!-- ركن -->
+<div class="section" id="corner">
+    <div class="back" onclick="goHome()"> رجوع</div>
+    <h2>ركن</h2>
+
+    <div class="products">
+
+        <div class="card">
+    <div class="img-box" onclick="openImage('img/e1.jpeg')">
+        <img src="img/E1.jpeg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/e2.jpeg')">
+        <img src="img/e2.jpeg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/e3.jpeg')">
+        <img src="img/e3.jpeg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/e4.jpeg')">
+        <img src="img/e4.jpeg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/e5.jpeg')">
+        <img src="img/e5.jpeg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/e6.jpeg')">
+        <img src="img/e6.jpeg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/e7.jpeg')">
+        <img src="img/e7.jpeg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/e8.jpeg')">
+        <img src="img/e8.jpeg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/e9.jpeg')">
+        <img src="img/e9.jpeg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/e10.jpeg')">
+        <img src="img/e10.jpeg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/e11.jpeg')">
+        <img src="img/e11.jpeg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/e12.jpeg')">
+        <img src="img/e12.jpeg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/e13.jpeg')">
+        <img src="img/e13.jpeg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/e14.jpeg')">
+        <img src="img/e14.jpeg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/e15.jpeg')">
+        <img src="img/e15.jpeg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<div class="card">
+    <div class="img-box" onclick="openImage('img/e16.jpeg')">
+        <img src="img/e16.jpeg">
+        <div class="zoom-icon">🔍</div>
+    </div>
+    <div class="card-body"></div>
+   </div>
+        </div>
+
+        <!-- باقي الصور زي ما هي... -->
+
+    </div>
+</div>
+<script>
+function showSection(id){
+    document.getElementById("home").style.display = "none";
+    document.querySelectorAll(".section").forEach(sec => sec.style.display="none");
+    document.getElementById(id).style.display = "block";
+}
+
+function goHome(){
+    document.getElementById("home").style.display = "block";
+    document.querySelectorAll(".section").forEach(sec => sec.style.display="none");
+}
+
+function orderProduct(productName){
+    let phone = "201010529776";
+    let message = "عايز اطلب: " + productName;
+    let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+    window.open(url, '_blank');
+}
+function setBg(event){
+    let file = event.target.files[0];
+    let reader = new FileReader();
+
+    reader.onload = function(e){
+        document.body.style.backgroundImage = "url(" + e.target.result + ")";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center";
+        document.body.style.backgroundAttachment = "fixed";
+    }
+
+    reader.readAsDataURL(file);
+}
+
+function closeImage(){
+    document.getElementById("imgModal").style.display = "none";
+}
+function openImage(src){
+    document.getElementById("modalImg").src = src;
+    document.getElementById("imgModal").style.display = "flex";
+}
+
+function closeImage(){
+    document.getElementById("imgModal").style.display = "none";
+}
+
+</script>
+<div id="imgModal" class="modal" onclick="closeImage()">
+    <span class="close-btn">✖</span>
+    <img id="modalImg">
+</div>
+
+
+</body>
+</html>
+ 
