@@ -272,6 +272,50 @@ height: 350px;
     color:#fff;
     cursor:pointer;
 }
+@media (max-width: 768px){
+
+    /* الهيدر أصغر */
+    .header{
+        padding:15px 10px;
+    }
+
+    .header h1{
+        font-size:28px;
+    }
+
+    .subtitle{
+        font-size:16px;
+    }
+
+    /* الأقسام تبقى صف واحد */
+    .categories{
+        display:flex;
+        flex-wrap:nowrap;   /* يمنع النزول تحت */
+        overflow-x:auto;    /* يسمح بالسحب يمين وشمال */
+        gap:10px;
+        padding:10px;
+    }
+
+    .cat{
+        flex:0 0 auto;
+        padding:10px 15px;
+        font-size:14px;
+        border-radius:12px;
+        white-space:nowrap;
+    }
+
+    /* المنتجات أصغر */
+    .products{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .img-box img{
+        height:180px;
+    }
+}
+.categories{
+    grid-template-columns: repeat(3, 1fr);
+}
 
 </style>
 </head>
