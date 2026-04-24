@@ -316,6 +316,34 @@ height: 350px;
 .categories{
     grid-template-columns: repeat(3, 1fr);
 }
+@media (max-width: 768px){
+
+    .social{
+        gap:10px;
+        margin:20px 0;
+    }
+
+    .social a{
+        font-size:14px;
+        padding:10px 14px;
+        border-radius:12px;
+    }
+}
+.social a{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+}
+@media (max-width: 768px){
+
+    .social a{
+        width:40px;
+        height:40px;
+        padding:0;
+        border-radius:50%;
+        font-size:12px;
+    }
+}
 
 </style>
 </head>
