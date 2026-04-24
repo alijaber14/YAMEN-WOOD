@@ -334,6 +334,55 @@ height: 350px;
 
    
 }
+.why{
+    max-width:1000px;
+    margin:60px auto;
+    padding:20px;
+    text-align:center;
+}
+
+.why h2{
+    font-size:28px;
+    margin-bottom:30px;
+}
+
+/* الكروت */
+.why-box{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap:20px;
+}
+
+.why-card{
+    padding:25px;
+    border-radius:20px;
+
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(10px);
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.why-card:hover{
+    transform:translateY(-10px);
+    background:#d06303;
+    color:#fff;
+}
+
+.icon{
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.why-card h3{
+    margin:10px 0;
+}
+@media (max-width:768px){
+    .why-box{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
 
 </style>
 </head>
@@ -372,6 +421,38 @@ height: 350px;
         <div class="cat" onclick="showSection('corner')"> ركن & انترية</div>
 
     </div>
+<div class="why">
+    <h2>ليه تختار YAMEN WOOD؟</h2>
+
+    <div class="why-box">
+
+        <div class="why-card">
+            <div class="icon"></div>
+            <h3>تفصيل حسب الطلب</h3>
+            <p>بننفذ أي تصميم على مزاجك وبأعلى دقة</p>
+        </div>
+
+        <div class="why-card">
+            <div class="icon"></div>
+            <h3>خامات عالية الجودة</h3>
+            <p>نستخدم أفضل أنواع الخشب لضمان المتانة</p>
+        </div>
+
+        <div class="why-card">
+            <div class="icon"></div>
+            <h3>أسعار مناسبة</h3>
+            <p>أفضل سعر مقابل أعلى جودة</p>
+        </div>
+
+        <div class="why-card">
+            <div class="icon"></div>
+            <h3>التزام بالمواعيد</h3>
+            <p>تسليم في الوقت بدون تأخير</p>
+        </div>
+
+    </div>
+</div>
+
 
 </div>
 
